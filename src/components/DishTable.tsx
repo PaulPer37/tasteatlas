@@ -12,7 +12,7 @@ import { type Dish } from '../interface/Dish';
 
 export default function DishTable( { data } : { data: Dish[] } ) {
 
-  let [rows, setRows] = useState(Array<Dish>)
+  let [rows, setRows] = useState<Dish[]>([])
 
   let getRows = () => {
     if (rows.length) {
@@ -25,17 +25,17 @@ export default function DishTable( { data } : { data: Dish[] } ) {
             <TableCell component="th" scope="row">
               {row.position}
             </TableCell>
-            <TableCell align="right">{row.title} ({row.subtitle})</TableCell>
-            
-            {/* PENDIENTE: Valores a renderizar en cada celda  */}
-            
+            <TableCell align="center">{row.title} ({row.subtitle})</TableCell>
+            <TableCell align="center">{row.country}</TableCell>
+            <TableCell align="center">{row.rating}</TableCell>
+            <TableCell align="center">{row.iconic}</TableCell>
+            <TableCell align="center">{row.ingredients}</TableCell>
           </TableRow>
         ))
       )
     } else {
       return <TableRow><TableCell>No data</TableCell></TableRow>
     }
-      
   }
 
   useEffect( ()=> {
@@ -50,9 +50,10 @@ export default function DishTable( { data } : { data: Dish[] } ) {
           <TableRow>
             <TableCell>Puesto</TableCell>
             <TableCell align='center'>Plato</TableCell>
-            
-            {/* PENDIENTE: Cabeceras de las columnas  */}
-
+            <TableCell align='center'>País</TableCell>
+            <TableCell align='center'>Rating</TableCell>
+            <TableCell align='center'>Lugares Icónicos</TableCell>
+            <TableCell align='center'>Ingredientes</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
